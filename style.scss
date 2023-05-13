@@ -1,0 +1,78 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+.result {
+  margin-bottom: 45px;
+}
+ul {
+  list-style-type: none;
+}
+li.repo {
+  display: flex;
+  box-sizing: border-box;
+  background-color: #e3e3e3;
+  border: 1px solid black;
+  width: 500px;
+  align-items: center;
+  padding: 0 20px;
+  justify-content: space-between;
+}
+
+.text {
+  margin: 0;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 661px;
+  height: 763px;
+  background-color: #c4c4c4;
+  padding-top: 18px;
+}
+
+input {
+  box-sizing: border-box;
+  width: 500px;
+  padding: 2px 13px;
+  height: 59px;
+  background-color: #ffffff;
+  display: flex;
+  text-align: start;
+}
+
+.added-list {
+  width: 500px;
+}
+.addRepo {
+  padding: 10px;
+  box-sizing: border-box;
+  align-items: center;
+  height: 50px;
+  background-color: #e27beb;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+}
+.addRepo div {
+  margin: 0;
+}
+.delete span {
+  display: block;
+  width: 40px;
+}
+.delete__part-one {
+  content: "";
+  height: 2px;
+  width: 40px;
+  background-color: red;
+  transform: rotate(45deg) translateY(1px);
+}
+
+.delete__part-two {
+  content: "";
+  height: 2px;
+  width: 40px;
+  background-color: red;
+  transform: rotate(-45deg) translateY(-1px);
+}
