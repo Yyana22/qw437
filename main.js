@@ -1,7 +1,7 @@
 const debounce = (fn, debounceTime) => {
     let time;
-    return function(){
-        const funcCall = () => { fn.apply(this, arguments)}
+    return function () {
+        const funcCall = () => { fn.apply(this, arguments) }
         clearTimeout(time)
         time = setTimeout(funcCall, debounceTime)
     }
@@ -28,25 +28,25 @@ wrapper.appendChild(result)
 const addedList = createElement('ul', 'added-list')
 wrapper.appendChild(addedList)
 
-function createRepo(repoData){
-    if(repoData != undefined){
+function createRepo(repoData) {
+    if (repoData != undefined) {
         let repoListItems = document.querySelectorAll('.repo');
-    if(repoListItems.length >= 5){
-        repoList.innerHTML = '';
-    }
-    let repoEl = createElement('li', 'repo');
-    repoEl.innerHTML = `${repoData.name}`;
-    repoList.appendChild(repoEl);
+        if (repoListItems.length >= 5) {
+            repoList.innerHTML = '';
+        }
+        let repoEl = createElement('li', 'repo');
+        repoEl.innerHTML = `${repoData.name}`;
+        repoList.appendChild(repoEl);
     } else {
         repoList.innerHTML = '';
     }
     const listRepo = document.querySelectorAll('.repo');
     let arr = Array.from(listRepo);
     arr.forEach((item) => {
-        item.addEventListener('click', function(){
+        item.addEventListener('click', function (e) {
             let addedRepo = createElement('li', 'addRepo')
-            if(repoData.name === this.innerHTML){
-                addedRepo.innerHTML = 
+            if (repoData.name === this.innerHTML) {
+                addedRepo.innerHTML =
                     `
                     <div>
                     Name: ${repoData.name}\n
@@ -61,31 +61,30 @@ function createRepo(repoData){
                     </div>
                     `
                 addedList.appendChild(addedRepo)
-                // function deleteRepo(){
-                    let img = document.querySelectorAll('.delete')
-                    let arr = Array.from(img);
-                    arr.forEach((item) => {
-                        item.addEventListener('click', function(){
-                            addedRepo.remove()
-                        });
+                let img = document.querySelectorAll('.delete')
+                let arr = Array.from(img);
+                arr.forEach((item) => {
+                    item.addEventListener('click', function () {
+                        item.parentNode.remove()
                     });
+                });
             }
         }
         );
     })
 }
 async function searchRepo() {
-    if(this.value != false){
+    if (this.value != false) {
         return await fetch(`https://api.github.com/search/repositories?q=${searchInput.value}&per_page=${repo_per_page}`).then((res) => {
-        if(res.ok){
-            res.json().then(res=>{
-                res.items.forEach(repo => {
-                    createRepo(repo)
-                });
-            })
-        } else {
-            return null
-        }
-    })
+            if (res.ok) {
+                res.json().then(res => {
+                    res.items.forEach(repo => {
+                        createRepo(repo)
+                    });
+                })
+            } else {
+                return null
+            }
+        })
     }
 }
