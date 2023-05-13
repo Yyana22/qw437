@@ -28,7 +28,6 @@ wrapper.appendChild(result)
 const addedList = createElement('ul', 'added-list')
 wrapper.appendChild(addedList)
 
-
 function createRepo(repoData){
     if(repoData != undefined){
         let repoListItems = document.querySelectorAll('.repo');
@@ -62,13 +61,14 @@ function createRepo(repoData){
                     </div>
                     `
                 addedList.appendChild(addedRepo)
-                function deleteRepo(){
-                    let img = document.querySelector('.delete')
-                    img.addEventListener('click', function(){
-                        console.log('delete')
-                    })
-                }
-                deleteRepo()
+                // function deleteRepo(){
+                    let img = document.querySelectorAll('.delete')
+                    let arr = Array.from(img);
+                    arr.forEach((item) => {
+                        item.addEventListener('click', function(){
+                            addedRepo.remove()
+                        });
+                    });
             }
         }
         );
